@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Delitos por nacionalidad en España</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .intro-section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .intro-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .intro-card h2 {
+      color: #0077cc;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .intro-card p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .slogan {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: #dc3545;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-left: 4px solid #dc3545;
+    }
+
+    .disclaimer {
+      font-style: italic;
+      color: #6c757d;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    /* Selector estilizado */
+    .selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    select {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    select:hover {
+      border-color: #0077cc;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Tabla con estilo */
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #eee;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background: #0077cc;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    tr:hover {
+      background: #f1f7ff;
+      transition: background 0.3s ease;
+    }
+
+    /* Gráfico */
+    .chart-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📊 Delitos por 100.000 habitantes según nacionalidad</h1>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-card">
+      <h2>Análisis de la Delincuencia y Nacionalidad en España</h2>
+      <p>España ha experimentado importantes flujos migratorios durante las últimas décadas, lo que ha contribuido a la diversidad cultural y al crecimiento económico del país. Sin embargo, como en muchas naciones receptoras de inmigración, existe un debate social sobre la posible relación entre inmigración y delincuencia.</p>
+      
+      <p>Este análisis busca examinar objetivamente los datos oficiales sobre delitos cometidos según nacionalidad, específicamente comparando las tasas de delincuencia entre españoles, personas de origen africano y personas de origen americano.</p>
+      
+      <div class="slogan">No me quejo de la inmigración, me quejo de sus delitos</div>
+      
+      <p>Es importante abordar este tema con datos fiables y análisis rigurosos, evitando generalizaciones injustas pero reconociendo patrones cuando existen. La delincuencia es un fenómeno multifactorial influenciado por condiciones socioeconómicas, oportunidades de integración y políticas públicas, entre otros aspectos.</p>
+      
+      <p>Los datos presentados a continuación muestran las tasas de delincuencia por cada 100.000 habitantes de cada grupo, lo que permite una comparación equitativa independientemente del tamaño de cada población.</p>
+      
+      <p class="disclaimer">Nota: Este análisis se basa en datos oficiales y tiene como objetivo informar de manera objetiva. No pretende estigmatizar a ningún colectivo, sino contribuir a un debate necesario basado en evidencias.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="selector card">
+      <label for="delito">Selecciona un delito:</label>
+      <select id="delito"></select>
+    </div>
+
+    <div class="card">
+      <h2>Tabla de tasas por año</h2>
+      <table id="data-table">
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th>Española</th>
+            <th>África</th>
+            <th>América</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="crimeChart"></canvas>
+    </div>
+  </main>
+
+  <!-- JSON incrustado (ejemplo reducido) -->
+<script id="delitos-json" type="application/json">
+{
+  "data": [
+    {
+      "Delito": "Delitos",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 291480.0,
+        "2021": 308969.0,
+        "2019": 307609.0,
+        "2017": 303717.0,
+        "2015": 221857.0,
+        "2013": 207580.0
+      }
+    },
+    {
+      "Delito": "Delitos",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 37316.0,
+        "2021": 32696.0,
+        "2019": 30198.0,
+        "2017": 25859.0,
+        "2015": 18277.0,
+        "2013": 18152.0
+      }
+    },
+    {
+      "Delito": "Delitos",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 39244.0,
+        "2021": 33539.0,
+        "2019": 30448.0,
+        "2017": 26009.0,
+        "2015": 21446.0,
+        "2013": 23984.0
+      }
+    },
+    {
+      "Delito": "Homicidio y sus formas",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 739.0,
+        "2021": 876.0,
+        "2019": 847.0,
+        "2017": 925.0,
+        "2015": 1071.0,
+        "2013": 1096.0
+      }
+    },
+    {
+      "Delito": "Homicidio y sus formas",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 133.0,
+        "2021": 95.0,
+        "2019": 50.0,
+        "2017": 37.0,
+        "2015": 60.0,
+        "2013": 90.0
+      }
+    },
+    {
+      "Delito": "Homicidio y sus formas",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 82.0,
+        "2021": 83.0,
+        "2019": 80.0,
+        "2017": 71.0,
+        "2015": 91.0,
+        "2013": 113.0
+      }
+    },
+    {
+      "Delito": "Homicidio",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 192.0,
+        "2021": 288.0,
+        "2019": 225.0,
+        "2017": 266.0,
+        "2015": 322.0,
+        "2013": 339.0
+      }
+    },
+    {
+      "Delito": "Homicidio",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 40.0,
+        "2021": 39.0,
+        "2019": 26.0,
+        "2017": 17.0,
+        "2015": 40.0,
+        "2013": 52.0
+      }
+    },
+    {
+      "Delito": "Homicidio",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 45.0,
+        "2021": 42.0,
+        "2019": 42.0,
+        "2017": 32.0,
+        "2015": 44.0,
+        "2013": 67.0
+      }
+    },
+    {
+      "Delito": "Asesinato",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 134.0,
+        "2021": 127.0,
+        "2019": 161.0,
+        "2017": 135.0,
+        "2015": 203.0,
+        "2013": 203.0
+      }
+    },
+    {
+      "Delito": "Asesinato",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 20.0,
+        "2021": 15.0,
+        "2019": 11.0,
+        "2017": 13.0,
+        "2015": 10.0,
+        "2013": 22.0
+      }
+    },
+    {
+      "Delito": "Asesinato",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 26.0,
+        "2021": 23.0,
+        "2019": 16.0,
+        "2017": 18.0,
+        "2015": 28.0,
+        "2013": 37.0
+      }
+    },
+    {
+      "Delito": "Homicidio por imprudencia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 411.0,
+        "2021": 461.0,
+        "2019": 460.0,
+        "2017": 523.0,
+        "2015": 546.0,
+        "2013": 553.0
+      }
+    },
+    {
+      "Delito": "Homicidio por imprudencia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 73.0,
+        "2021": 41.0,
+        "2019": 13.0,
+        "2017": 7.0,
+        "2015": 10.0,
+        "2013": 16.0
+      }
+    },
+    {
+      "Delito": "Homicidio por imprudencia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 11.0,
+        "2021": 18.0,
+        "2019": 22.0,
+        "2017": 21.0,
+        "2015": 19.0,
+        "2013": 9.0
+      }
+    },
+    {
+      "Delito": "Inducción al suicidio",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 2.0,
+        "2019": 1.0,
+        "2017": 1.0,
+        "2013": 1.0
+      }
+    },
+    {
+      "Delito": "Inducción al suicidio",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 0.0,
+        "2019": 0.0,
+        "2017": 0.0,
+        "2013": 0.0
+      }
+    },
+    {
+      "Delito": "Inducción al suicidio",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 0.0,
+        "2019": 0.0,
+        "2017": 0.0,
+        "2013": 0.0
+      }
+    },
+    {
+      "Delito": "Lesiones",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 49382.0,
+        "2021": 52174.0,
+        "2019": 52290.0,
+        "2017": 50527.0,
+        "2015": 27964.0,
+        "2013": 24976.0
+      }
+    },
+    {
+      "Delito": "Lesiones",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 6771.0,
+        "2021": 6304.0,
+        "2019": 5227.0,
+        "2017": 4514.0,
+        "2015": 2397.0,
+        "2013": 2141.0
+      }
+    },
+    {
+      "Delito": "Lesiones",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 7930.0,
+        "2021": 6516.0,
+        "2019": 5729.0,
+        "2017": 4819.0,
+        "2015": 3260.0,
+        "2013": 3636.0
+      }
+    },
+    {
+      "Delito": "Contra la libertad",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 24574.0,
+        "2021": 25931.0,
+        "2019": 23333.0,
+        "2017": 22051.0,
+        "2015": 10630.0,
+        "2013": 8817.0
+      }
+    },
+    {
+      "Delito": "Contra la libertad",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 2094.0,
+        "2021": 1828.0,
+        "2019": 1409.0,
+        "2017": 1164.0,
+        "2015": 612.0,
+        "2013": 504.0
+      }
+    },
+    {
+      "Delito": "Contra la libertad",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1913.0,
+        "2021": 1574.0,
+        "2019": 1242.0,
+        "2017": 959.0,
+        "2015": 622.0,
+        "2013": 575.0
+      }
+    },
+    {
+      "Delito": "Amenazas",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 19348.0,
+        "2021": 20865.0,
+        "2019": 18804.0,
+        "2017": 18131.0,
+        "2015": 8691.0,
+        "2013": 7240.0
+      }
+    },
+    {
+      "Delito": "Amenazas",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1722.0,
+        "2021": 1534.0,
+        "2019": 1172.0,
+        "2017": 965.0,
+        "2015": 505.0,
+        "2013": 416.0
+      }
+    },
+    {
+      "Delito": "Amenazas",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1419.0,
+        "2021": 1222.0,
+        "2019": 973.0,
+        "2017": 756.0,
+        "2015": 478.0,
+        "2013": 450.0
+      }
+    },
+    {
+      "Delito": "Coacciones y detenciones ilegales",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 5226.0,
+        "2021": 5066.0,
+        "2019": 4529.0,
+        "2017": 3920.0,
+        "2015": 1939.0,
+        "2013": 1577.0
+      }
+    },
+    {
+      "Delito": "Coacciones y detenciones ilegales",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 372.0,
+        "2021": 294.0,
+        "2019": 237.0,
+        "2017": 199.0,
+        "2015": 107.0,
+        "2013": 88.0
+      }
+    },
+    {
+      "Delito": "Coacciones y detenciones ilegales",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 494.0,
+        "2021": 352.0,
+        "2019": 269.0,
+        "2017": 203.0,
+        "2015": 144.0,
+        "2013": 125.0
+      }
+    },
+    {
+      "Delito": "Torturas e integridad moral",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 8050.0,
+        "2021": 7756.0,
+        "2019": 6619.0,
+        "2017": 5995.0,
+        "2015": 3230.0,
+        "2013": 2169.0
+      }
+    },
+    {
+      "Delito": "Torturas e integridad moral",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 532.0,
+        "2021": 546.0,
+        "2019": 381.0,
+        "2017": 309.0,
+        "2015": 194.0,
+        "2013": 143.0
+      }
+    },
+    {
+      "Delito": "Torturas e integridad moral",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 834.0,
+        "2021": 679.0,
+        "2019": 504.0,
+        "2017": 393.0,
+        "2015": 238.0,
+        "2013": 223.0
+      }
+    },
+    {
+      "Delito": "Trato degradante y violencia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 8020.0,
+        "2021": 7655.0,
+        "2019": 6539.0,
+        "2017": 5954.0,
+        "2015": 3161.0,
+        "2013": 2121.0
+      }
+    },
+    {
+      "Delito": "Trato degradante y violencia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 530.0,
+        "2021": 544.0,
+        "2019": 379.0,
+        "2017": 309.0,
+        "2015": 192.0,
+        "2013": 142.0
+      }
+    },
+    {
+      "Delito": "Trato degradante y violencia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 834.0,
+        "2021": 678.0,
+        "2019": 503.0,
+        "2017": 393.0,
+        "2015": 236.0,
+        "2013": 223.0
+      }
+    },
+    {
+      "Delito": "Tortura",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 21.0,
+        "2021": 84.0,
+        "2019": 68.0,
+        "2017": 35.0,
+        "2015": 64.0,
+        "2013": 46.0
+      }
+    },
+    {
+      "Delito": "Tortura",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1.0,
+        "2021": 1.0,
+        "2019": 2.0,
+        "2017": 0.0,
+        "2015": 2.0,
+        "2013": 1.0
+      }
+    },
+    {
+      "Delito": "Tortura",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 0.0,
+        "2021": 1.0,
+        "2019": 1.0,
+        "2017": 0.0,
+        "2015": 2.0,
+        "2013": 0.0
+      }
+    },
+    {
+      "Delito": "Otros",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 9.0,
+        "2021": 17.0,
+        "2019": 12.0,
+        "2017": 6.0,
+        "2015": 5.0,
+        "2013": 2.0
+      }
+    },
+    {
+      "Delito": "Otros",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1.0,
+        "2021": 1.0,
+        "2019": 0.0,
+        "2017": 0.0,
+        "2015": 0.0,
+        "2013": 0.0
+      }
+    },
+    {
+      "Delito": "Otros",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 0.0,
+        "2021": 0.0,
+        "2019": 0.0,
+        "2017": 0.0,
+        "2015": 0.0,
+        "2013": 0.0
+      }
+    },
+    {
+      "Delito": "Contra la libertad e indemnidad sexuales",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 2369.0,
+        "2021": 2782.0,
+        "2019": 2458.0,
+        "2017": 2103.0,
+        "2015": 1865.0,
+        "2013": 1978.0
+      }
+    },
+    {
+      "Delito": "Contra la libertad e indemnidad sexuales",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 355.0,
+        "2021": 333.0,
+        "2019": 258.0,
+        "2017": 143.0,
+        "2015": 170.0,
+        "2013": 162.0
+      }
+    },
+    {
+      "Delito": "Contra la libertad e indemnidad sexuales",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 386.0,
+        "2021": 398.0,
+        "2019": 262.0,
+        "2017": 214.0,
+        "2015": 204.0,
+        "2013": 257.0
+      }
+    },
+    {
+      "Delito": "Contra las relaciones familiares",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3475.0,
+        "2021": 4496.0,
+        "2019": 5222.0,
+        "2017": 5977.0,
+        "2015": 6452.0,
+        "2013": 5748.0
+      }
+    },
+    {
+      "Delito": "Contra las relaciones familiares",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 129.0,
+        "2021": 141.0,
+        "2019": 138.0,
+        "2017": 113.0,
+        "2015": 125.0,
+        "2013": 89.0
+      }
+    },
+    {
+      "Delito": "Contra las relaciones familiares",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 230.0,
+        "2021": 257.0,
+        "2019": 265.0,
+        "2017": 261.0,
+        "2015": 274.0,
+        "2013": 235.0
+      }
+    },
+    {
+      "Delito": "Contra los derechos y deberes familiares",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3468.0,
+        "2021": 4494.0,
+        "2019": 5214.0,
+        "2017": 5968.0,
+        "2015": 6438.0,
+        "2013": 5738.0
+      }
+    },
+    {
+      "Delito": "Contra los derechos y deberes familiares",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 129.0,
+        "2021": 140.0,
+        "2019": 137.0,
+        "2017": 111.0,
+        "2015": 123.0,
+        "2013": 87.0
+      }
+    },
+    {
+      "Delito": "Contra los derechos y deberes familiares",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 229.0,
+        "2021": 256.0,
+        "2019": 264.0,
+        "2017": 259.0,
+        "2015": 273.0,
+        "2013": 235.0
+      }
+    },
+    {
+      "Delito": "Quebrantamiento de los deberes de custodia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 8.0,
+        "2021": 18.0,
+        "2019": 25.0,
+        "2017": 52.0,
+        "2015": 49.0,
+        "2013": 27.0
+      }
+    },
+    {
+      "Delito": "Quebrantamiento de los deberes de custodia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 0.0,
+        "2021": 0.0,
+        "2019": 4.0,
+        "2017": 2.0,
+        "2015": 3.0,
+        "2013": 2.0
+      }
+    },
+    {
+      "Delito": "Quebrantamiento de los deberes de custodia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 0.0,
+        "2021": 1.0,
+        "2019": 2.0,
+        "2017": 0.0,
+        "2015": 2.0,
+        "2013": 4.0
+      }
+    },
+    {
+      "Delito": "Sustracción de menores",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 19.0,
+        "2021": 26.0,
+        "2019": 19.0,
+        "2017": 20.0,
+        "2015": 27.0,
+        "2013": 26.0
+      }
+    },
+    {
+      "Delito": "Sustracción de menores",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 3.0,
+        "2021": 3.0,
+        "2019": 1.0,
+        "2017": 1.0,
+        "2015": 1.0,
+        "2013": 3.0
+      }
+    },
+    {
+      "Delito": "Sustracción de menores",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 6.0,
+        "2021": 3.0,
+        "2019": 8.0,
+        "2017": 4.0,
+        "2015": 2.0,
+        "2013": 1.0
+      }
+    },
+    {
+      "Delito": "Abandono de familia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3441.0,
+        "2021": 4450.0,
+        "2019": 5170.0,
+        "2017": 5896.0,
+        "2015": 6362.0,
+        "2013": 5685.0
+      }
+    },
+    {
+      "Delito": "Abandono de familia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 126.0,
+        "2021": 137.0,
+        "2019": 132.0,
+        "2017": 108.0,
+        "2015": 119.0,
+        "2013": 82.0
+      }
+    },
+    {
+      "Delito": "Abandono de familia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 223.0,
+        "2021": 252.0,
+        "2019": 254.0,
+        "2017": 255.0,
+        "2015": 269.0,
+        "2013": 230.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra las relaciones familiares",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 7.0,
+        "2021": 2.0,
+        "2019": 8.0,
+        "2017": 9.0,
+        "2015": 14.0,
+        "2013": 10.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra las relaciones familiares",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 0.0,
+        "2021": 1.0,
+        "2019": 1.0,
+        "2017": 2.0,
+        "2015": 2.0,
+        "2013": 2.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra las relaciones familiares",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1.0,
+        "2021": 1.0,
+        "2019": 1.0,
+        "2017": 2.0,
+        "2015": 1.0,
+        "2013": 0.0
+      }
+    },
+    {
+      "Delito": "Contra el patrimonio y el orden socioeconómico",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 84863.0,
+        "2021": 93113.0,
+        "2019": 100028.0,
+        "2017": 102218.0,
+        "2015": 56919.0,
+        "2013": 45910.0
+      }
+    },
+    {
+      "Delito": "Contra el patrimonio y el orden socioeconómico",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 16196.0,
+        "2021": 13025.0,
+        "2019": 12376.0,
+        "2017": 10407.0,
+        "2015": 5452.0,
+        "2013": 4716.0
+      }
+    },
+    {
+      "Delito": "Contra el patrimonio y el orden socioeconómico",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 9290.0,
+        "2021": 8409.0,
+        "2019": 9211.0,
+        "2017": 7550.0,
+        "2015": 3548.0,
+        "2013": 2966.0
+      }
+    },
+    {
+      "Delito": "Hurtos",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 39667.0,
+        "2021": 39620.0,
+        "2019": 45193.0,
+        "2017": 43424.0,
+        "2015": 13923.0,
+        "2013": 7252.0
+      }
+    },
+    {
+      "Delito": "Hurtos",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 8066.0,
+        "2021": 5981.0,
+        "2019": 6271.0,
+        "2017": 5078.0,
+        "2015": 1520.0,
+        "2013": 639.0
+      }
+    },
+    {
+      "Delito": "Hurtos",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 5783.0,
+        "2021": 5041.0,
+        "2019": 6123.0,
+        "2017": 4400.0,
+        "2015": 1262.0,
+        "2013": 766.0
+      }
+    },
+    {
+      "Delito": "Robos",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 14138.0,
+        "2021": 15965.0,
+        "2019": 17617.0,
+        "2017": 21212.0,
+        "2015": 22524.0,
+        "2013": 22855.0
+      }
+    },
+    {
+      "Delito": "Robos",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 4641.0,
+        "2021": 3655.0,
+        "2019": 2929.0,
+        "2017": 2675.0,
+        "2015": 2571.0,
+        "2013": 2922.0
+      }
+    },
+    {
+      "Delito": "Robos",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1061.0,
+        "2021": 976.0,
+        "2019": 1063.0,
+        "2017": 1104.0,
+        "2015": 1215.0,
+        "2013": 1389.0
+      }
+    },
+    {
+      "Delito": "Robo con violencia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 4323.0,
+        "2021": 4689.0,
+        "2019": 4905.0,
+        "2017": 5449.0,
+        "2015": 5855.0,
+        "2013": 6428.0
+      }
+    },
+    {
+      "Delito": "Robo con violencia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 2362.0,
+        "2021": 1744.0,
+        "2019": 1287.0,
+        "2017": 1019.0,
+        "2015": 991.0,
+        "2013": 1163.0
+      }
+    },
+    {
+      "Delito": "Robo con violencia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 503.0,
+        "2021": 452.0,
+        "2019": 490.0,
+        "2017": 511.0,
+        "2015": 656.0,
+        "2013": 818.0
+      }
+    },
+    {
+      "Delito": "Robo con fuerza",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 9815.0,
+        "2021": 11276.0,
+        "2019": 12712.0,
+        "2017": 15763.0,
+        "2015": 16669.0,
+        "2013": 16427.0
+      }
+    },
+    {
+      "Delito": "Robo con fuerza",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 2279.0,
+        "2021": 1911.0,
+        "2019": 1642.0,
+        "2017": 1656.0,
+        "2015": 1580.0,
+        "2013": 1759.0
+      }
+    },
+    {
+      "Delito": "Robo con fuerza",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 558.0,
+        "2021": 524.0,
+        "2019": 573.0,
+        "2017": 593.0,
+        "2015": 559.0,
+        "2013": 571.0
+      }
+    },
+    {
+      "Delito": "Robo y hurto de uso de vehículo",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 1120.0,
+        "2021": 1240.0,
+        "2019": 1443.0,
+        "2017": 1661.0,
+        "2015": 1721.0,
+        "2013": 2034.0
+      }
+    },
+    {
+      "Delito": "Robo y hurto de uso de vehículo",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 133.0,
+        "2021": 104.0,
+        "2019": 126.0,
+        "2017": 111.0,
+        "2015": 113.0,
+        "2013": 169.0
+      }
+    },
+    {
+      "Delito": "Robo y hurto de uso de vehículo",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 64.0,
+        "2021": 48.0,
+        "2019": 53.0,
+        "2017": 64.0,
+        "2015": 53.0,
+        "2013": 80.0
+      }
+    },
+    {
+      "Delito": "Usurpación",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 1886.0,
+        "2021": 2930.0,
+        "2019": 3491.0,
+        "2017": 5287.0,
+        "2015": 2758.0,
+        "2013": 1415.0
+      }
+    },
+    {
+      "Delito": "Usurpación",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 538.0,
+        "2021": 619.0,
+        "2019": 481.0,
+        "2017": 492.0,
+        "2015": 178.0,
+        "2013": 99.0
+      }
+    },
+    {
+      "Delito": "Usurpación",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 290.0,
+        "2021": 426.0,
+        "2019": 362.0,
+        "2017": 536.0,
+        "2015": 177.0,
+        "2013": 34.0
+      }
+    },
+    {
+      "Delito": "Defraudaciones",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 18269.0,
+        "2021": 21473.0,
+        "2019": 20372.0,
+        "2017": 19010.0,
+        "2015": 8823.0,
+        "2013": 6658.0
+      }
+    },
+    {
+      "Delito": "Defraudaciones",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1423.0,
+        "2021": 1179.0,
+        "2019": 1062.0,
+        "2017": 793.0,
+        "2015": 316.0,
+        "2013": 270.0
+      }
+    },
+    {
+      "Delito": "Defraudaciones",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1343.0,
+        "2021": 1189.0,
+        "2019": 954.0,
+        "2017": 805.0,
+        "2015": 446.0,
+        "2013": 383.0
+      }
+    },
+    {
+      "Delito": "Estafas",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 13322.0,
+        "2021": 16000.0,
+        "2019": 14991.0,
+        "2017": 13624.0,
+        "2015": 5943.0,
+        "2013": 4350.0
+      }
+    },
+    {
+      "Delito": "Estafas",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 700.0,
+        "2021": 677.0,
+        "2019": 596.0,
+        "2017": 464.0,
+        "2015": 208.0,
+        "2013": 205.0
+      }
+    },
+    {
+      "Delito": "Estafas",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 910.0,
+        "2021": 754.0,
+        "2019": 580.0,
+        "2017": 520.0,
+        "2015": 315.0,
+        "2013": 281.0
+      }
+    },
+    {
+      "Delito": "Apropiación indebida",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3019.0,
+        "2021": 3635.0,
+        "2019": 3865.0,
+        "2017": 3919.0,
+        "2015": 2344.0,
+        "2013": 1965.0
+      }
+    },
+    {
+      "Delito": "Apropiación indebida",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 645.0,
+        "2021": 430.0,
+        "2019": 380.0,
+        "2017": 272.0,
+        "2015": 89.0,
+        "2013": 55.0
+      }
+    },
+    {
+      "Delito": "Apropiación indebida",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 375.0,
+        "2021": 362.0,
+        "2019": 312.0,
+        "2017": 236.0,
+        "2015": 115.0,
+        "2013": 90.0
+      }
+    },
+    {
+      "Delito": "Defraudaciones de fluido eléctrico",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 1928.0,
+        "2021": 1838.0,
+        "2019": 1516.0,
+        "2017": 1467.0,
+        "2015": 536.0,
+        "2013": 343.0
+      }
+    },
+    {
+      "Delito": "Defraudaciones de fluido eléctrico",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 78.0,
+        "2021": 72.0,
+        "2019": 86.0,
+        "2017": 57.0,
+        "2015": 19.0,
+        "2013": 10.0
+      }
+    },
+    {
+      "Delito": "Defraudaciones de fluido eléctrico",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 58.0,
+        "2021": 73.0,
+        "2019": 62.0,
+        "2017": 49.0,
+        "2015": 16.0,
+        "2013": 12.0
+      }
+    },
+    {
+      "Delito": "Daños",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 7242.0,
+        "2021": 8671.0,
+        "2019": 8345.0,
+        "2017": 7970.0,
+        "2015": 4054.0,
+        "2013": 3416.0
+      }
+    },
+    {
+      "Delito": "Daños",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 812.0,
+        "2021": 769.0,
+        "2019": 603.0,
+        "2017": 489.0,
+        "2015": 223.0,
+        "2013": 196.0
+      }
+    },
+    {
+      "Delito": "Daños",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 589.0,
+        "2021": 582.0,
+        "2019": 502.0,
+        "2017": 456.0,
+        "2015": 232.0,
+        "2013": 181.0
+      }
+    },
+    {
+      "Delito": "Receptación y blanqueo de capitales",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 1533.0,
+        "2021": 1818.0,
+        "2019": 2106.0,
+        "2017": 2179.0,
+        "2015": 1953.0,
+        "2013": 1330.0
+      }
+    },
+    {
+      "Delito": "Receptación y blanqueo de capitales",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 296.0,
+        "2021": 255.0,
+        "2019": 373.0,
+        "2017": 342.0,
+        "2015": 313.0,
+        "2013": 259.0
+      }
+    },
+    {
+      "Delito": "Receptación y blanqueo de capitales",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 131.0,
+        "2021": 113.0,
+        "2019": 130.0,
+        "2017": 151.0,
+        "2015": 137.0,
+        "2013": 107.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra el patrimonio y orden socioeconómico",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 1008.0,
+        "2021": 1396.0,
+        "2019": 1461.0,
+        "2017": 1475.0,
+        "2015": 1163.0,
+        "2013": 950.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra el patrimonio y orden socioeconómico",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 287.0,
+        "2021": 463.0,
+        "2019": 531.0,
+        "2017": 427.0,
+        "2015": 218.0,
+        "2013": 162.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra el patrimonio y orden socioeconómico",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 29.0,
+        "2021": 34.0,
+        "2019": 24.0,
+        "2017": 34.0,
+        "2015": 26.0,
+        "2013": 26.0
+      }
+    },
+    {
+      "Delito": "Contra la seguridad colectiva",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 82007.0,
+        "2021": 83392.0,
+        "2019": 78761.0,
+        "2017": 76000.0,
+        "2015": 78201.0,
+        "2013": 85558.0
+      }
+    },
+    {
+      "Delito": "Contra la seguridad colectiva",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 5655.0,
+        "2021": 5604.0,
+        "2019": 5345.0,
+        "2017": 4703.0,
+        "2015": 5169.0,
+        "2013": 6577.0
+      }
+    },
+    {
+      "Delito": "Contra la seguridad colectiva",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 13883.0,
+        "2021": 11687.0,
+        "2019": 9876.0,
+        "2017": 8787.0,
+        "2015": 10107.0,
+        "2013": 12955.0
+      }
+    },
+    {
+      "Delito": "Contra la salud pública",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 8042.0,
+        "2021": 8806.0,
+        "2019": 7776.0,
+        "2017": 7782.0,
+        "2015": 7838.0,
+        "2013": 7618.0
+      }
+    },
+    {
+      "Delito": "Contra la salud pública",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1480.0,
+        "2021": 1620.0,
+        "2019": 1782.0,
+        "2017": 1810.0,
+        "2015": 2267.0,
+        "2013": 3001.0
+      }
+    },
+    {
+      "Delito": "Contra la salud pública",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1151.0,
+        "2021": 890.0,
+        "2019": 995.0,
+        "2017": 1080.0,
+        "2015": 1204.0,
+        "2013": 1578.0
+      }
+    },
+    {
+      "Delito": "Contra la seguridad vial",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 73809.0,
+        "2021": 74395.0,
+        "2019": 70740.0,
+        "2017": 67948.0,
+        "2015": 70088.0,
+        "2013": 77720.0
+      }
+    },
+    {
+      "Delito": "Contra la seguridad vial",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 4169.0,
+        "2021": 3978.0,
+        "2019": 3558.0,
+        "2017": 2888.0,
+        "2015": 2892.0,
+        "2013": 3572.0
+      }
+    },
+    {
+      "Delito": "Contra la seguridad vial",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 12727.0,
+        "2021": 10788.0,
+        "2019": 8871.0,
+        "2017": 7704.0,
+        "2015": 8899.0,
+        "2013": 11374.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la seguridad colectiva",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 156.0,
+        "2021": 191.0,
+        "2019": 245.0,
+        "2017": 270.0,
+        "2015": 275.0,
+        "2013": 220.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la seguridad colectiva",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 6.0,
+        "2021": 6.0,
+        "2019": 5.0,
+        "2017": 5.0,
+        "2015": 10.0,
+        "2013": 4.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la seguridad colectiva",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 5.0,
+        "2021": 9.0,
+        "2019": 10.0,
+        "2017": 3.0,
+        "2015": 4.0,
+        "2013": 3.0
+      }
+    },
+    {
+      "Delito": "Falsedades",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3424.0,
+        "2021": 4719.0,
+        "2019": 4623.0,
+        "2017": 4326.0,
+        "2015": 4177.0,
+        "2013": 3601.0
+      }
+    },
+    {
+      "Delito": "Falsedades",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 838.0,
+        "2021": 960.0,
+        "2019": 1786.0,
+        "2017": 1733.0,
+        "2015": 1601.0,
+        "2013": 1510.0
+      }
+    },
+    {
+      "Delito": "Falsedades",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 590.0,
+        "2021": 471.0,
+        "2019": 454.0,
+        "2017": 403.0,
+        "2015": 485.0,
+        "2013": 509.0
+      }
+    },
+    {
+      "Delito": "Falsedades documentales",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3201.0,
+        "2021": 4439.0,
+        "2019": 4361.0,
+        "2017": 3997.0,
+        "2015": 3941.0,
+        "2013": 3365.0
+      }
+    },
+    {
+      "Delito": "Falsedades documentales",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 790.0,
+        "2021": 909.0,
+        "2019": 1753.0,
+        "2017": 1684.0,
+        "2015": 1550.0,
+        "2013": 1452.0
+      }
+    },
+    {
+      "Delito": "Falsedades documentales",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 567.0,
+        "2021": 450.0,
+        "2019": 433.0,
+        "2017": 387.0,
+        "2015": 464.0,
+        "2013": 487.0
+      }
+    },
+    {
+      "Delito": "Falsificación documentos públicos",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 2793.0,
+        "2021": 3726.0,
+        "2019": 3736.0,
+        "2017": 3419.0,
+        "2015": 3515.0,
+        "2013": 2999.0
+      }
+    },
+    {
+      "Delito": "Falsificación documentos públicos",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 765.0,
+        "2021": 863.0,
+        "2019": 1722.0,
+        "2017": 1639.0,
+        "2015": 1503.0,
+        "2013": 1403.0
+      }
+    },
+    {
+      "Delito": "Falsificación documentos públicos",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 539.0,
+        "2021": 419.0,
+        "2019": 406.0,
+        "2017": 357.0,
+        "2015": 425.0,
+        "2013": 456.0
+      }
+    },
+    {
+      "Delito": "Falsificación documentos privados",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 222.0,
+        "2021": 519.0,
+        "2019": 531.0,
+        "2017": 489.0,
+        "2015": 348.0,
+        "2013": 276.0
+      }
+    },
+    {
+      "Delito": "Falsificación documentos privados",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 9.0,
+        "2021": 38.0,
+        "2019": 19.0,
+        "2017": 38.0,
+        "2015": 20.0,
+        "2013": 22.0
+      }
+    },
+    {
+      "Delito": "Falsificación documentos privados",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 12.0,
+        "2021": 14.0,
+        "2019": 21.0,
+        "2017": 17.0,
+        "2015": 17.0,
+        "2013": 16.0
+      }
+    },
+    {
+      "Delito": "Falsificación de certificados",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 174.0,
+        "2021": 166.0,
+        "2019": 70.0,
+        "2017": 58.0,
+        "2015": 58.0,
+        "2013": 56.0
+      }
+    },
+    {
+      "Delito": "Falsificación de certificados",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 12.0,
+        "2021": 2.0,
+        "2019": 8.0,
+        "2017": 2.0,
+        "2015": 12.0,
+        "2013": 12.0
+      }
+    },
+    {
+      "Delito": "Falsificación de certificados",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 16.0,
+        "2021": 10.0,
+        "2019": 4.0,
+        "2017": 3.0,
+        "2015": 1.0,
+        "2013": 3.0
+      }
+    },
+    {
+      "Delito": "Falsificación de tarjetas de crédito",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 12.0,
+        "2021": 28.0,
+        "2019": 24.0,
+        "2017": 31.0,
+        "2015": 20.0,
+        "2013": 34.0
+      }
+    },
+    {
+      "Delito": "Falsificación de tarjetas de crédito",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 4.0,
+        "2021": 6.0,
+        "2019": 4.0,
+        "2017": 5.0,
+        "2015": 15.0,
+        "2013": 15.0
+      }
+    },
+    {
+      "Delito": "Falsificación de tarjetas de crédito",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 0.0,
+        "2021": 7.0,
+        "2019": 2.0,
+        "2017": 10.0,
+        "2015": 21.0,
+        "2013": 12.0
+      }
+    },
+    {
+      "Delito": "Otros delitos de las falsedades",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 223.0,
+        "2021": 280.0,
+        "2019": 262.0,
+        "2017": 329.0,
+        "2015": 236.0,
+        "2013": 236.0
+      }
+    },
+    {
+      "Delito": "Otros delitos de las falsedades",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 48.0,
+        "2021": 51.0,
+        "2019": 33.0,
+        "2017": 49.0,
+        "2015": 51.0,
+        "2013": 58.0
+      }
+    },
+    {
+      "Delito": "Otros delitos de las falsedades",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 23.0,
+        "2021": 21.0,
+        "2019": 21.0,
+        "2017": 16.0,
+        "2015": 21.0,
+        "2013": 22.0
+      }
+    },
+    {
+      "Delito": "Contra la Administración Pública",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 444.0,
+        "2021": 1490.0,
+        "2019": 1466.0,
+        "2017": 1416.0,
+        "2015": 1305.0,
+        "2013": 1295.0
+      }
+    },
+    {
+      "Delito": "Contra la Administración Pública",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 26.0,
+        "2021": 136.0,
+        "2019": 106.0,
+        "2017": 83.0,
+        "2015": 87.0,
+        "2013": 76.0
+      }
+    },
+    {
+      "Delito": "Contra la Administración Pública",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 10.0,
+        "2021": 96.0,
+        "2019": 68.0,
+        "2017": 54.0,
+        "2015": 83.0,
+        "2013": 87.0
+      }
+    },
+    {
+      "Delito": "Desobediencia y denegación auxilio",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 167.0,
+        "2021": 1175.0,
+        "2019": 994.0,
+        "2017": 1038.0,
+        "2015": 940.0,
+        "2013": 1049.0
+      }
+    },
+    {
+      "Delito": "Desobediencia y denegación auxilio",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 18.0,
+        "2021": 136.0,
+        "2019": 102.0,
+        "2017": 78.0,
+        "2015": 59.0,
+        "2013": 70.0
+      }
+    },
+    {
+      "Delito": "Desobediencia y denegación auxilio",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 9.0,
+        "2021": 96.0,
+        "2019": 68.0,
+        "2017": 51.0,
+        "2015": 80.0,
+        "2013": 80.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la Administración Pública",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 277.0,
+        "2021": 315.0,
+        "2019": 472.0,
+        "2017": 378.0,
+        "2015": 365.0,
+        "2013": 246.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la Administración Pública",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 8.0,
+        "2021": 0.0,
+        "2019": 4.0,
+        "2017": 5.0,
+        "2015": 28.0,
+        "2013": 6.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la Administración Pública",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1.0,
+        "2021": 0.0,
+        "2019": 0.0,
+        "2017": 3.0,
+        "2015": 3.0,
+        "2013": 7.0
+      }
+    },
+    {
+      "Delito": "Contra la Administración de Justicia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 16862.0,
+        "2021": 15801.0,
+        "2019": 16573.0,
+        "2017": 16550.0,
+        "2015": 15906.0,
+        "2013": 14090.0
+      }
+    },
+    {
+      "Delito": "Contra la Administración de Justicia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1694.0,
+        "2021": 1224.0,
+        "2019": 1053.0,
+        "2017": 888.0,
+        "2015": 827.0,
+        "2013": 720.0
+      }
+    },
+    {
+      "Delito": "Contra la Administración de Justicia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 2082.0,
+        "2021": 1644.0,
+        "2019": 1361.0,
+        "2017": 1200.0,
+        "2015": 1210.0,
+        "2013": 1187.0
+      }
+    },
+    {
+      "Delito": "Acusación y denuncia falsas y simulación de delitos",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 462.0,
+        "2021": 1045.0,
+        "2019": 1985.0,
+        "2017": 2639.0,
+        "2015": 3284.0,
+        "2013": 2480.0
+      }
+    },
+    {
+      "Delito": "Acusación y denuncia falsas y simulación de delitos",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 26.0,
+        "2021": 27.0,
+        "2019": 42.0,
+        "2017": 54.0,
+        "2015": 48.0,
+        "2013": 44.0
+      }
+    },
+    {
+      "Delito": "Acusación y denuncia falsas y simulación de delitos",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 34.0,
+        "2021": 70.0,
+        "2019": 138.0,
+        "2017": 135.0,
+        "2015": 179.0,
+        "2013": 157.0
+      }
+    },
+    {
+      "Delito": "Acusación y denuncias falsas",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 176.0,
+        "2021": 249.0,
+        "2019": 370.0,
+        "2017": 490.0,
+        "2015": 502.0,
+        "2013": 430.0
+      }
+    },
+    {
+      "Delito": "Acusación y denuncias falsas",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 10.0,
+        "2021": 7.0,
+        "2019": 15.0,
+        "2017": 13.0,
+        "2015": 14.0,
+        "2013": 19.0
+      }
+    },
+    {
+      "Delito": "Acusación y denuncias falsas",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 16.0,
+        "2021": 20.0,
+        "2019": 25.0,
+        "2017": 23.0,
+        "2015": 30.0,
+        "2013": 29.0
+      }
+    },
+    {
+      "Delito": "Simulación del delito",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 286.0,
+        "2021": 796.0,
+        "2019": 1615.0,
+        "2017": 2149.0,
+        "2015": 2782.0,
+        "2013": 2050.0
+      }
+    },
+    {
+      "Delito": "Simulación del delito",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 16.0,
+        "2021": 20.0,
+        "2019": 27.0,
+        "2017": 41.0,
+        "2015": 34.0,
+        "2013": 25.0
+      }
+    },
+    {
+      "Delito": "Simulación del delito",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 18.0,
+        "2021": 50.0,
+        "2019": 113.0,
+        "2017": 112.0,
+        "2015": 149.0,
+        "2013": 128.0
+      }
+    },
+    {
+      "Delito": "Quebrantamiento de condena",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 15809.0,
+        "2021": 14022.0,
+        "2019": 13747.0,
+        "2017": 12908.0,
+        "2015": 11733.0,
+        "2013": 10783.0
+      }
+    },
+    {
+      "Delito": "Quebrantamiento de condena",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1634.0,
+        "2021": 1144.0,
+        "2019": 957.0,
+        "2017": 803.0,
+        "2015": 735.0,
+        "2013": 643.0
+      }
+    },
+    {
+      "Delito": "Quebrantamiento de condena",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 2028.0,
+        "2021": 1543.0,
+        "2019": 1187.0,
+        "2017": 1019.0,
+        "2015": 978.0,
+        "2013": 995.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la Administración de Justicia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 591.0,
+        "2021": 734.0,
+        "2019": 841.0,
+        "2017": 1003.0,
+        "2015": 889.0,
+        "2013": 827.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la Administración de Justicia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 34.0,
+        "2021": 53.0,
+        "2019": 54.0,
+        "2017": 31.0,
+        "2015": 44.0,
+        "2013": 33.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra la Administración de Justicia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 20.0,
+        "2021": 31.0,
+        "2019": 36.0,
+        "2017": 46.0,
+        "2015": 53.0,
+        "2013": 35.0
+      }
+    },
+    {
+      "Delito": "Contra el orden público",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 11736.0,
+        "2021": 11515.0,
+        "2019": 10554.0,
+        "2017": 10502.0,
+        "2015": 9878.0,
+        "2013": 9131.0
+      }
+    },
+    {
+      "Delito": "Contra el orden público",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 2424.0,
+        "2021": 2042.0,
+        "2019": 1573.0,
+        "2017": 1411.0,
+        "2015": 1266.0,
+        "2013": 1218.0
+      }
+    },
+    {
+      "Delito": "Contra el orden público",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1808.0,
+        "2021": 1515.0,
+        "2019": 1221.0,
+        "2017": 1139.0,
+        "2015": 1166.0,
+        "2013": 1118.0
+      }
+    },
+    {
+      "Delito": "Atentados contra la autoridad y de la resistencia y desobediencia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 10233.0,
+        "2021": 10043.0,
+        "2019": 8954.0,
+        "2017": 9240.0,
+        "2015": 8473.0,
+        "2013": 8143.0
+      }
+    },
+    {
+      "Delito": "Atentados contra la autoridad y de la resistencia y desobediencia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 2258.0,
+        "2021": 1829.0,
+        "2019": 1410.0,
+        "2017": 1288.0,
+        "2015": 1184.0,
+        "2013": 1178.0
+      }
+    },
+    {
+      "Delito": "Atentados contra la autoridad y de la resistencia y desobediencia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 1603.0,
+        "2021": 1393.0,
+        "2019": 1089.0,
+        "2017": 990.0,
+        "2015": 1018.0,
+        "2013": 1047.0
+      }
+    },
+    {
+      "Delito": "Atentados contra la autoridad",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 4861.0,
+        "2021": 5059.0,
+        "2019": 4793.0,
+        "2017": 5139.0,
+        "2015": 4850.0,
+        "2013": 4622.0
+      }
+    },
+    {
+      "Delito": "Atentados contra la autoridad",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 909.0,
+        "2021": 802.0,
+        "2019": 637.0,
+        "2017": 624.0,
+        "2015": 550.0,
+        "2013": 545.0
+      }
+    },
+    {
+      "Delito": "Atentados contra la autoridad",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 788.0,
+        "2021": 712.0,
+        "2019": 597.0,
+        "2017": 572.0,
+        "2015": 594.0,
+        "2013": 612.0
+      }
+    },
+    {
+      "Delito": "Resistencia y desobediencia",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 5372.0,
+        "2021": 4984.0,
+        "2019": 4161.0,
+        "2017": 4101.0,
+        "2015": 3623.0,
+        "2013": 3521.0
+      }
+    },
+    {
+      "Delito": "Resistencia y desobediencia",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 1349.0,
+        "2021": 1027.0,
+        "2019": 773.0,
+        "2017": 664.0,
+        "2015": 634.0,
+        "2013": 633.0
+      }
+    },
+    {
+      "Delito": "Resistencia y desobediencia",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 815.0,
+        "2021": 681.0,
+        "2019": 492.0,
+        "2017": 418.0,
+        "2015": 424.0,
+        "2013": 435.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra el orden público",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 1503.0,
+        "2021": 1472.0,
+        "2019": 1600.0,
+        "2017": 1262.0,
+        "2015": 1405.0,
+        "2013": 988.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra el orden público",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 166.0,
+        "2021": 213.0,
+        "2019": 163.0,
+        "2017": 123.0,
+        "2015": 82.0,
+        "2013": 40.0
+      }
+    },
+    {
+      "Delito": "Otros delitos contra el orden público",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 205.0,
+        "2021": 122.0,
+        "2019": 132.0,
+        "2017": 149.0,
+        "2015": 148.0,
+        "2013": 71.0
+      }
+    },
+    {
+      "Delito": "Resto de delitos",
+      "Nacionalidad": "Española",
+      "Valores": {
+        "2023": 3555.0,
+        "2021": 4924.0,
+        "2019": 4835.0,
+        "2017": 5127.0,
+        "2015": 4259.0,
+        "2013": 3211.0
+      }
+    },
+    {
+      "Delito": "Resto de delitos",
+      "Nacionalidad": "África",
+      "Valores": {
+        "2023": 469.0,
+        "2021": 458.0,
+        "2019": 496.0,
+        "2017": 354.0,
+        "2015": 317.0,
+        "2013": 206.0
+      }
+    },
+    {
+      "Delito": "Resto de delitos",
+      "Nacionalidad": "América",
+      "Valores": {
+        "2023": 206.0,
+        "2021": 210.0,
+        "2019": 175.0,
+        "2017": 159.0,
+        "2015": 158.0,
+        "2013": 123.0
+      }
+    }
+  ]
+}
+</script>
+
+  <script>
+    // Población por año y grupo (INE)
+    const poblacion = {
+      2013: { esp: 41583545, afr: 1103534, ame: 1395063 },
+      2015: { esp: 41894738, afr: 1043237, ame: 1048098 },
+      2017: { esp: 41989168, afr: 1037138, ame: 1007189 },
+      2019: { esp: 41982103, afr: 1120639, ame: 1252057 },
+      2021: { esp: 41936827, afr: 1193758, ame: 1492189 },
+      2023: { esp: 41995741, afr: 1193758, ame: 1492189 }
+    };
+
+    const years = [2013,2015,2017,2019,2021,2023];
+    const tbody = document.querySelector("#data-table tbody");
+    const select = document.getElementById("delito");
+    let chart;
+
+    // Leer JSON incrustado
+    const raw = document.getElementById("delitos-json").textContent;
+    const dataset = JSON.parse(raw).data;
+
+    // Reorganizar datos
+    const delitos = {};
+    dataset.forEach(item => {
+      if (!delitos[item.Delito]) {
+        delitos[item.Delito] = { esp:{}, afr:{}, ame:{} };
+      }
+      const key = item.Nacionalidad.includes("Española") ? "esp"
+                 : item.Nacionalidad.includes("África") ? "afr"
+                 : "ame";
+      delitos[item.Delito][key] = item.Valores;
+    });
+
+    // Llenar select dinámicamente
+    Object.keys(delitos).forEach(delito => {
+      const opt = document.createElement("option");
+      opt.value = delito;
+      opt.textContent = delito;
+      select.appendChild(opt);
+    });
+
+    function updateChart(type) {
+      tbody.innerHTML = "";
+      const tasas = { esp: [], afr: [], ame: [] };
+
+      years.forEach(y => {
+        const esp = delitos[type].esp[y] || 0;
+        const afr = delitos[type].afr[y] || 0;
+        const ame = delitos[type].ame[y] || 0;
+
+        const tEsp = (esp / poblacion[y].esp) * 100000;
+        const tAfr = (afr / poblacion[y].afr) * 100000;
+        const tAme = (ame / poblacion[y].ame) * 100000;
+
+        tasas.esp.push(tEsp);
+        tasas.afr.push(tAfr);
+        tasas.ame.push(tAme);
+
+        tbody.innerHTML += `<tr>
+          <td>${y}</td>
+          <td>${tEsp.toFixed(2)}</td>
+          <td>${tAfr.toFixed(2)}</td>
+          <td>${tAme.toFixed(2)}</td>
+        </tr>`;
+      });
+
+      if(chart) chart.destroy();
+      chart = new Chart(document.getElementById("crimeChart"), {
+        type: "line",
+        data: {
+          labels: years,
+          datasets: [
+            { label: "Española", data: tasas.esp, borderColor: "#0077cc", backgroundColor: "#0077cc22", tension: 0.3, fill:true },
+            { label: "África", data: tasas.afr, borderColor: "#28a745", backgroundColor: "#28a74522", tension: 0.3, fill:true },
+            { label: "América", data: tasas.ame, borderColor: "#dc3545", backgroundColor: "#dc354522", tension: 0.3, fill:true }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: { display: true, text: `Evolución de ${type} por 100.000 habitantes`, font: { size: 20 } },
+            legend: { position: "bottom" }
+          },
+          scales: {
+            y: { beginAtZero: true, title: { display: true, text: "Tasa por 100.000 habitantes" } },
+            x: { title: { display: true, text: "Año" } }
+          }
+        }
+      });
+    }
+
+    // Inicial
+    updateChart(select.value);
+    select.addEventListener("change", e => updateChart(e.target.value));
+  </script>
+</body>
+</html>
